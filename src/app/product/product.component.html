@@ -1,0 +1,21 @@
+<section class="card">
+  <img class="img-fluid" src="{{ product.img }}" alt="{{ product.name }}" />
+  <div class="card-body">
+    <h4 class="card-title">{{ product.name }}</h4>
+    <div class="details">
+      <p class="card-text"><strong>ID: </strong>{{ product.id }}</p>
+      <p class="card-text"><strong>Price: </strong>{{ product.price }}</p>
+      <p class="card-text">
+        <strong>Available Pieces: </strong>{{ product.availablePieces }}
+      </p>
+    </div>
+    <div class="viewDetails">
+      <ng-container *ngIf="product.availablePieces; else unavailable">
+        <a href="" class="btn btn-primary">Get It!</a>
+      </ng-container>
+      <ng-template #unavailable>
+        <a href="" class="btn btn-secondary">Unavailable</a>
+      </ng-template>
+    </div>
+  </div>
+</section>
