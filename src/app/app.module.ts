@@ -8,6 +8,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { MatTableModule } from '@angular/material/table';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { MatTableModule } from '@angular/material/table';
     NavbarComponent,
     ProductListComponent,
     ProductComponent,
-    OrderListComponent
+    OrderListComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
