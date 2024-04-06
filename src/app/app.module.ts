@@ -9,6 +9,7 @@ import { ProductComponent } from './product/product.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

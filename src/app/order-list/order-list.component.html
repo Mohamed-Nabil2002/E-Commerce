@@ -95,5 +95,14 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
+
+    <!-- Pagination -->
+    <mat-paginator
+      [length]="allOrders.length"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      (page)="onPageChange($event)"
+    >
+    </mat-paginator>
   </div>
 </div>

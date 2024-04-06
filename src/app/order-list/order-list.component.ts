@@ -22,6 +22,8 @@ export class OrderListComponent implements OnInit {
     'paymentType',
     'totalPrice',
   ];
+  pageIndex: number = 0;
+  pageSize: number = 20;
 
   constructor() {}
 
@@ -31,7 +33,7 @@ export class OrderListComponent implements OnInit {
 
   private getAllOrders(): void {
     this.allOrders = orders;
-    this.dataSource = new MatTableDataSource(orders);
+    this.initTableData();
   }
 
   calculateTotalPrice(order: Order): number {
@@ -50,5 +52,17 @@ export class OrderListComponent implements OnInit {
 
   private totalPriceRoundedValue(totalPrice: number): number {
     return Number(totalPrice.toFixed(2));
+  }
+
+  // Pagination
+  onPageChange(event: any): void {
+    const pageStartElement = event.pageIndex * event.pageSize;
+    const pageLastElement = (event.pageIndex + 1) * event.pageSize;
+    const newData = this.allOrders.slice(pageStartElement, pageLastElement);
+    this.dataSource = new MatTableDataSource(newData);
+  }
+
+  initTableData(): void {
+    this.dataSource = new MatTableDataSource(this.allOrders.slice(0, 20));
   }
 }
