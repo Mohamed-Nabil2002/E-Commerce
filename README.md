@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.11.
 
+## Description
+
+Create `ECommerce` project using angular 13 consists of a three main pages `products` , `orders` and `order-details`. show `all products` in prodcts page and `loadMoreButton` button to load four by four products. show `all orders` in all orders page that are inserted into paginated table. when click one of these order, navigate to it (order-details) page that show the details of customer and products inside that order. 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
