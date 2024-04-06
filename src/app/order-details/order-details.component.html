@@ -1,45 +1,60 @@
 <div class="order-details-container">
   <h1 class="order-details-header">Order Details</h1>
-  <section class="row order-details">
-    <div class="row order-content">
-      <div class="col-lg-3 col-md-4 col-md-6">
-        <span><strong>Order ID: </strong> {{ order.id }}</span>
+  <div class="row">
+    <section class="col-lg-6 order-details">
+      <div class="content mr-5" style="border: 1px solid #eee">
+        <div class="top">
+          <h3>Order Info</h3>
+        </div>
+
+        <div class="bottom">
+          <div>
+            <span><strong>ID: </strong> {{ order.id }}</span>
+          </div>
+          <div>
+            <span
+              ><strong>Date: </strong>
+              {{ order.orderDate | date : "dd-MM-yyyy hh:mm a" }}</span
+            >
+          </div>
+          <div>
+            <span><strong>Customer ID: </strong> {{ order.userId }}</span>
+          </div>
+          <div>
+            <span
+              ><strong>Payment Method: </strong> {{ order.paymentType }}</span
+            >
+          </div>
+        </div>
       </div>
-      <div class="col-lg-3 col-md-4 col-md-6">
-        <span
-          ><strong>Order Date: </strong>
-          {{ order.orderDate | date : "dd-MM-yyyy hh:mm a" }}</span
-        >
+    </section>
+    <section class="col-lg-6 customer-details">
+      <div class="content mr-5" style="border: 1px solid #eee">
+        <div class="top">
+          <h3>Customer Info</h3>
+        </div>
+        <div class="bottom">
+          <div>
+            <span><strong>ID: </strong> {{ customer?.id }}</span>
+          </div>
+          <div>
+            <span
+              ><strong>Register Date: </strong>
+              {{ customer?.registerDate | date : "dd-MM-yyyy hh:mm a" }}</span
+            >
+          </div>
+          <div>
+            <span><strong>Name: </strong> {{ customer?.name }}</span>
+          </div>
+          <div>
+            <span><strong>phone: </strong> {{ customer?.phone }}</span>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-3 col-md-4 col-md-6">
-        <span><strong>Customer ID: </strong> {{ order.userId }}</span>
-      </div>
-      <div class="col-lg-3 col-md-4 col-md-6">
-        <span><strong>Payment Method: </strong> {{ order.paymentType }}</span>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
   <hr />
-  <section class="row customer-details">
-    <div class="row customer-content">
-      <div class="col-lg-3 col-md-4 col-md-6">
-        <span><strong>Customer ID: </strong> {{ customer?.id }}</span>
-      </div>
-      <div class="col-lg-3 col-md-4 col-md-6">
-        <span
-          ><strong>Register Date: </strong>
-          {{ customer?.registerDate | date : "dd-MM-yyyy hh:mm a" }}</span
-        >
-      </div>
-      <div class="col-lg-3 col-md-4 col-md-6">
-        <span><strong>Customer Name: </strong> {{ customer?.name }}</span>
-      </div>
-      <div class="col-lg-3 col-md-4 col-md-6">
-        <span><strong>phone: </strong> {{ customer?.phone }}</span>
-      </div>
-    </div>
-  </section>
-  <hr />
+
   <section class="row product-details">
     <div class="table-container">
       <table mat-table [dataSource]="dataSource">
