@@ -1,0 +1,118 @@
+<div class="order-details-container">
+  <h1 class="order-details-header">Order Details</h1>
+  <section class="row order-details">
+    <div class="row order-content">
+      <div class="col-lg-3 col-md-4 col-md-6">
+        <span><strong>Order ID: </strong> {{ order.id }}</span>
+      </div>
+      <div class="col-lg-3 col-md-4 col-md-6">
+        <span
+          ><strong>Order Date: </strong>
+          {{ order.orderDate | date : "dd-MM-yyyy hh:mm a" }}</span
+        >
+      </div>
+      <div class="col-lg-3 col-md-4 col-md-6">
+        <span><strong>Customer ID: </strong> {{ order.userId }}</span>
+      </div>
+      <div class="col-lg-3 col-md-4 col-md-6">
+        <span><strong>Payment Method: </strong> {{ order.paymentType }}</span>
+      </div>
+    </div>
+  </section>
+  <hr />
+  <section class="row customer-details">
+    <div class="row customer-content">
+      <div class="col-lg-3 col-md-4 col-md-6">
+        <span><strong>Customer ID: </strong> {{ customer?.id }}</span>
+      </div>
+      <div class="col-lg-3 col-md-4 col-md-6">
+        <span
+          ><strong>Register Date: </strong>
+          {{ customer?.registerDate | date : "dd-MM-yyyy hh:mm a" }}</span
+        >
+      </div>
+      <div class="col-lg-3 col-md-4 col-md-6">
+        <span><strong>Customer Name: </strong> {{ customer?.name }}</span>
+      </div>
+      <div class="col-lg-3 col-md-4 col-md-6">
+        <span><strong>phone: </strong> {{ customer?.phone }}</span>
+      </div>
+    </div>
+  </section>
+  <hr />
+  <section class="row product-details">
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+          <th [style.width]="'10%'" mat-header-cell *matHeaderCellDef>
+            <div class="table-header">
+              <div class="header-container">
+                <div class="header-title">Product ID</div>
+              </div>
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="data-text ellipsis">
+              {{ element?.id }}
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th [style.width]="'20%'" mat-header-cell *matHeaderCellDef>
+            <div class="table-header">
+              <div class="header-container">
+                <div class="header-title">Name</div>
+              </div>
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="name-img d-flex align-items-center">
+              <img
+                class="img-fluid"
+                [src]="element?.img"
+                [alt]="element?.name"
+              />
+              <div class="data-text ellipsis">
+                {{ element?.name }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th [style.width]="'20%'" mat-header-cell *matHeaderCellDef>
+            <div class="table-header">
+              <div class="header-container">
+                <div class="header-title">Price</div>
+              </div>
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="data-text ellipsis">
+              {{ element?.price }}
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="availablePieces">
+          <th [style.width]="'10%'" mat-header-cell *matHeaderCellDef>
+            <div class="table-header">
+              <div class="header-container">
+                <div class="header-title">Available Pieces</div>
+              </div>
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="data-text ellipsis">
+              {{ element?.availablePieces }}
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </section>
+</div>
