@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
+import { OrderListComponent } from './order-list/order-list.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ProductListComponent,
-    ProductComponent
+    ProductComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

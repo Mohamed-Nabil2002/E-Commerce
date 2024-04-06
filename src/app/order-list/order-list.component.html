@@ -1,0 +1,99 @@
+<div class="order-overview-container">
+  <h1 class="order-header">All Orders</h1>
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <th [style.width]="'10%'" mat-header-cell *matHeaderCellDef>
+          <div class="table-header">
+            <div class="header-container">
+              <div class="header-title">Order ID</div>
+            </div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <a [routerLink]="['/order/', element.id]" class="data-text ellipsis">
+            {{ element.id }}
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="userId">
+        <th [style.width]="'20%'" mat-header-cell *matHeaderCellDef>
+          <div class="table-header">
+            <div class="header-container">
+              <div class="header-title">Customer ID</div>
+            </div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="data-text ellipsis">
+            {{ element.userId }}
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="orderDate">
+        <th [style.width]="'20%'" mat-header-cell *matHeaderCellDef>
+          <div class="table-header">
+            <div class="header-container">
+              <div class="header-title">Order Date</div>
+            </div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="data-text ellipsis">
+            {{ element.orderDate | date : "dd-MM-yyyy hh:mm a" }}
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="productsCount">
+        <th [style.width]="'10%'" mat-header-cell *matHeaderCellDef>
+          <div class="table-header">
+            <div class="header-container">
+              <div class="header-title">Products Count</div>
+            </div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="data-text ellipsis">
+            {{ element.products?.length }}
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="paymentType">
+        <th [style.width]="'20%'" mat-header-cell *matHeaderCellDef>
+          <div class="table-header">
+            <div class="header-container">
+              <div class="header-title">Payment Type</div>
+            </div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="data-text ellipsis">
+            {{ element.paymentType }}
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="totalPrice">
+        <th [style.width]="'20%'" mat-header-cell *matHeaderCellDef>
+          <div class="table-header">
+            <div class="header-container">
+              <div class="header-title">Total Price</div>
+            </div>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="data-text ellipsis">
+            {{ calculateTotalPrice(element) }}
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
